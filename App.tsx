@@ -1,12 +1,10 @@
-import { View, Text } from 'react-native';
 import React from 'react';
 
+// import Screens
+import SplashScreen from './src/screens/SplashScreen/SplashScreen';
+
 const App = () => {
-  return (
-    <View>
-      <Text>Omm Namaha Shivay</Text> 
-    </View>
-  );
+  return <SplashScreen />;
 };
 
 export default App;
