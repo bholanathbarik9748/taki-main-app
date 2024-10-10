@@ -4,7 +4,7 @@ import React from 'react';
 const App = () => {
   return (
     <View>
-      <Text>Omm Namaha Shivay</Text>
+      <Text>Omm Namaha Shivay</Text> 
     </View>
   );
 };
