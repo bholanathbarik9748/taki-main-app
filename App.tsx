@@ -1,10 +1,10 @@
 import React from 'react';
 
 // import Screens
-import SplashScreen from './src/screens/SplashScreen/SplashScreen';
+import AppNavigator from './src/navigation/AppNavigator';
 
 const App = () => {
-  return <SplashScreen />;
+  return <AppNavigator />;
 };
 
 export default App;
