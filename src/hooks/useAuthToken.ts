@@ -9,7 +9,6 @@ const useAuthToken = () => {
         try {
             // Store the token securely
             await Keychain.setGenericPassword('auth', jwtToken);
-            console.log('Token stored successfully');
             return { success: true };
         } catch (err) {
             console.error('Error storing the token:', err);
@@ -25,7 +24,6 @@ const useAuthToken = () => {
                 setToken(credentials.password);
                 return { success: true, token: credentials.password };
             } else {
-                console.log('No token found');
                 return { success: false, error: 'No token found' };
             }
         } catch (err) {
