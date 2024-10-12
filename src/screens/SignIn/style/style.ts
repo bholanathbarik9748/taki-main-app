@@ -4,79 +4,88 @@ import {colors} from '../../../assets/color/colors';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.darkPrimary, // Use primary color for background
+    backgroundColor: colors.darkPrimary,
     justifyContent: 'center',
     alignItems: 'center',
   },
   formContainer: {
     width: '85%',
     padding: 30,
-    backgroundColor: colors.darkSecondary, // Use secondary color for form container
-    borderRadius: 15, // More rounded corners for a modern look
+    backgroundColor: colors.darkSecondary,
+    borderRadius: 20, // Slightly more rounded
     shadowColor: colors.pureBlack,
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.3, // Slightly stronger shadow for modern look
     shadowOffset: {width: 0, height: 4},
-    shadowRadius: 10,
-    elevation: 8, // Add more shadow to elevate the form
+    shadowRadius: 12,
+    elevation: 10, // More elevation for depth
+    marginBottom: 20, // Add margin at the bottom for spacing
   },
   title: {
-    fontSize: 32, // Larger font size for the title
-    color: colors.accent, // Accent color for the title
-    fontWeight: '700',
+    fontSize: 34, // Larger title for better readability
+    color: colors.accent,
+    fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 25,
+    marginBottom: 30,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 52,
-    backgroundColor: colors.darkPrimary, // Dark primary color for input fields
-    borderRadius: 10,
-    paddingHorizontal: 12,
-    marginBottom: 22,
+    height: 55, // Increase height for a more luxurious feel
+    backgroundColor: colors.darkPrimary,
+    borderRadius: 12, // Slightly larger border radius
+    paddingHorizontal: 14, // More padding for input fields
+    borderWidth: 1, // Add subtle border for distinction
+    borderColor: colors.lightGray,
   },
   input: {
     flex: 1,
     fontSize: 16,
-    color: colors.pureWhite, // White text color for input
+    color: colors.pureWhite,
     marginLeft: 10,
   },
   button: {
-    paddingVertical: 15,
-    borderRadius: 10,
+    paddingVertical: 18, // Taller buttons for better interaction
+    borderRadius: 12, // More rounded buttons
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: 14,
     shadowColor: colors.accent,
-    shadowOpacity: 0.5,
-    shadowOffset: {width: 0, height: 4},
-    shadowRadius: 6, // Add a shadow for depth
-    elevation: 8,
+    shadowOpacity: 0.6,
+    shadowOffset: {width: 0, height: 5},
+    shadowRadius: 8,
+    elevation: 10, // Enhanced shadow for a standout button
+    backgroundColor: colors.accent, // Use accent color
   },
   buttonText: {
-    color: colors.pureWhite, // White text color for button text
+    color: colors.pureWhite,
     fontSize: 18,
     fontWeight: 'bold',
   },
   forgotPassword: {
-    color: colors.lightGray, // Light gray for "Forgot Password"
+    color: colors.lightGray,
     textAlign: 'center',
-    marginTop: 12,
+    marginTop: 15, // Adjust spacing for better flow
     fontSize: 16,
   },
   alreadyAccount: {
-    color: colors.lightGray, // Light gray for "Already have an account?"
+    color: colors.lightGray,
     textAlign: 'center',
-    marginTop: 12,
+    marginTop: 16, // Larger spacing for better clarity
     fontSize: 16,
   },
   errorMessage: {
-    color: colors?.pureRed,
-    fontSize: 12,
-    marginBottom: 10,
-    marginLeft: 10,
+    color: colors.pureRed,
+    fontSize: 13, // Slightly larger for readability
+    marginBottom: 12,
+    marginLeft: 12,
   },
   errorBorder: {
     borderColor: colors.pureRed,
-    borderWidth: 1,
+    borderWidth: 1.5, // Stronger border to emphasize error
+  },
+  noErrorMargin: {
+    marginBottom: 24,
+  },
+  errorMargin: {
+    marginBottom: 5,
   },
 });

@@ -17,6 +17,7 @@ import {LoginBody, LoginFieldsError} from './types/login';
 import {globalFormHandler} from '../../utils/InputHandler/InputHandler';
 import {isValidLoginBody} from './validation';
 import {loginUser} from './services';
+import AlertComponent from '../../components/Alert/Alert';
 
 const SignIn = () => {
   const [formData, setFormData] = useState<LoginBody>({
@@ -28,19 +29,32 @@ const SignIn = () => {
     password: false,
   });
 
+  const [apiError, setApiError] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const handleSignIn = async () => {
-    // Add sign-in logic here
+    // Validate the form
     const isValid: boolean = isValidLoginBody(formData, setError);
     if (!isValid) {
       return;
     }
 
+    setIsLoading(true);
     try {
+      // Call loginUser
       const response = await loginUser(formData);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
+
+      // Check if the response contains the expected data
+      if (response) {
+        // Handle successful login (e.g., save token, navigate to the next screen)
+        console.log('Login successful');
+      } else {
+        console.log('No response data');
+      }
+    } catch (errorCode) {
+      setApiError(errorCode?.response?.data?.message || 'Login failed');
     }
+    setIsLoading(false);
   };
 
   const handleAlreadyHaveAccount = () => {
@@ -52,11 +66,11 @@ const SignIn = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.formContainer}>
         <Text style={styles.title}> Login </Text>
-
         <View
           style={[
             styles.inputContainer,
-            error?.password && styles?.errorBorder,
+            error?.email && styles?.errorBorder,
+            error?.email ? styles?.errorMargin : styles?.noErrorMargin,
           ]}>
           <EmailIcon />
           <TextInput
@@ -74,11 +88,11 @@ const SignIn = () => {
         {error?.email && (
           <Text style={styles.errorMessage}>Please Enter A valid Email</Text>
         )}
-
         <View
           style={[
             styles.inputContainer,
             error?.password && styles?.errorBorder,
+            error?.password ? styles?.errorMargin : styles?.noErrorMargin,
           ]}>
           <PasswordIcon />
           <TextInput
@@ -99,8 +113,11 @@ const SignIn = () => {
 
         <TouchableOpacity
           style={[styles.button, {backgroundColor: colors.accent}]}
-          onPress={handleSignIn}>
-          <Text style={styles.buttonText}> Continue </Text>
+          onPress={handleSignIn}
+          disabled={isLoading}>
+          <Text style={styles.buttonText}>
+            {isLoading ? 'Please wait...' : 'Continue'}
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity>
@@ -114,6 +131,14 @@ const SignIn = () => {
           </Text>
         </TouchableOpacity>
       </View>
+      {apiError && (
+        <AlertComponent
+          title="Error"
+          message={apiError}
+          cancelText="Cancel"
+          closeAction={() => setApiError('')}
+        />
+      )}
     </SafeAreaView>
   );
 };

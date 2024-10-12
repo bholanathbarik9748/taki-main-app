@@ -12,13 +12,13 @@ export const isValidLoginBody = (
 
   // Ensure the email is provided and valid
   if (!formData?.email || !isEmailValid(formData?.email)) {
-    isValid = true;
+    isValid = false;
     setError(prev => ({...prev, email: true}));
   }
 
   // Ensure the password is provided and valid
   if (!formData?.password || !isPasswordValid(formData?.password)) {
-    isValid = true;
+    isValid = false;
     setError(prev => ({...prev, password: true}));
   }
 
