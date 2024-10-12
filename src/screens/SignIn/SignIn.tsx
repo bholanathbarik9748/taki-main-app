@@ -13,16 +13,34 @@ import {colors} from '../../assets/color/colors';
 import EmailIcon from '../../assets/Svg/Email';
 import PasswordIcon from '../../assets/Svg/Password';
 import {styles} from './style/style';
-import {LoginBody} from './types/login';
+import {LoginBody, LoginFieldsError} from './types/login';
 import {globalFormHandler} from '../../utils/InputHandler/InputHandler';
+import {isValidLoginBody} from './validation';
+import {loginUser} from './services';
 
 const SignIn = () => {
-  const [formData, setFormData] = useState<LoginBody>();
-  const [error, setError] = useState<LoginBody>();
+  const [formData, setFormData] = useState<LoginBody>({
+    email: '',
+    password: '',
+  });
+  const [error, setError] = useState<LoginFieldsError>({
+    email: false,
+    password: false,
+  });
 
-  const handleSignIn = () => {
+  const handleSignIn = async () => {
     // Add sign-in logic here
-    console.log(formData);
+    const isValid: boolean = isValidLoginBody(formData, setError);
+    if (!isValid) {
+      return;
+    }
+
+    try {
+      const response = await loginUser(formData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleAlreadyHaveAccount = () => {

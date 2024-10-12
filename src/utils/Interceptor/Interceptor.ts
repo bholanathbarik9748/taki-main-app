@@ -5,7 +5,7 @@ import useAuthToken from '../../hooks/useAuthToken';
 
 // Create an Axios instance
 const apiInstance = axios.create({
-  baseURL: 'https://example.com/api', // Your base API URL
+  baseURL: 'http://ec2-13-201-78-105.ap-south-1.compute.amazonaws.com:3000/api/v1', // Your base API URL
   timeout: 10000, // Timeout for requests
 });
 

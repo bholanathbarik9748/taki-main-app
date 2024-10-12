@@ -4,6 +4,6 @@ export interface LoginBody {
 }
 
 export interface LoginFieldsError {
-  email: boolean;
-  password: boolean;
+  email?: boolean;
+  password?: boolean;
 }
